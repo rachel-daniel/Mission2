@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq; // this allows me to do to array.Sum() method
+using System.Linq; // this allows us to do to array.Sum() method
 
 namespace Mission2
 {
