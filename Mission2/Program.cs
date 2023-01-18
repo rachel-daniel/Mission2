@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq; // this allows me to do to array.Sum() method
 
 namespace Mission2
 {
@@ -32,20 +33,30 @@ namespace Mission2
 
                 // fill the counter array with the counts for each total
                 int total = die1 + die2;
-                counter[total]++;
+                counter[total-2]++; // -2 because the index is 2 less than the actual value
             }
 
             // keep track of how many times each die was rolled
             Console.WriteLine("SIMULATION RESULTS\nEach '*' represents 1% of total rolls\nThe total number of rolls=" + input);
 
             // print histogram for percentage each number was rolled
-            // each * = 1% total rolls
+            for (int i = 0; i < counter.Length; i++)
+            {
+                // get the percentage of total
+                float percent = (float)counter[i] / (float)counter.Sum() * 100;
 
-            int number = 0;
+                // number of asterisks for each value
+                string result = new String('*', (int)percent);
 
-            Console.WriteLine((number + 1) + ": " + counter[5]);
+                // print the histogram of percentages for each total
+                Console.WriteLine((i + 2).ToString() + ": " + result); 
 
+            }
 
+            // Console.WriteLine(counter.Sum()); // verify that the total count is correct
+
+            Console.WriteLine("Thank you for using the dice throwing simulator. Goodbye!");
+ 
         }
     }
 }
